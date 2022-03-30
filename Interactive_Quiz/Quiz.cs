@@ -9,6 +9,12 @@ namespace Interactive_Quiz
         private int _currentQuestionIndex = -1;
         public string Title { get; set; }
         public int Score { get; private set; }
+        public string getQuestion;
+        public string getAnswer1;
+        public string getAnswer2;
+        public string getAnswer3;
+        public string getAnswer4;
+        public bool isFirstTime;
         
 
 
@@ -33,10 +39,10 @@ namespace Interactive_Quiz
             //2nd question
             _questions.Add(new Question());
             _questions[1].QuestionText = "what is 2 + 3";
-            _questions[1].Answer1 = "2";
+            _questions[1].Answer1 = "5";
             _questions[1].Answer2 = "3";
             _questions[1].Answer3 = "6";
-            _questions[1].Answer4 = "5";
+            _questions[1].Answer4 = "2";
             _questions[1].CorrectAnswer = "5";
 
             //3rd question
@@ -53,9 +59,9 @@ namespace Interactive_Quiz
             _questions.Add(new Question());
             _questions[3].QuestionText = "8:4 as 10:?";
             _questions[3].Answer1 = "3";
-            _questions[3].Answer2 = "7";
+            _questions[3].Answer2 = "5";
             _questions[3].Answer3 = "24";
-            _questions[3].Answer4 = "5";
+            _questions[3].Answer4 = "7";
             _questions[3].CorrectAnswer = "5";
 
 
@@ -72,24 +78,32 @@ namespace Interactive_Quiz
 
         private void GetQuestionWithoutAnswer() 
         {
+            getQuestion = _questions[_currentQuestionIndex].QuestionText;
+
 
         }
 
         public void GetNextQuestion()
         {
             _currentQuestionIndex++;
+
             if (_currentQuestionIndex ! == _questions.Count)
             {
                 GetQuestionWithoutAnswer();
-            }else
+            }
+            else if (_currentQuestionIndex == _questions.Count)
             {
                 Exception exception;
             }
+                
+            
+
         }
 
         public bool CheckUserAnswer(string answer)
         {
-            return true;
+            answer = _questions[_currentQuestionIndex].CorrectAnswer;
+
         }
 
     }
