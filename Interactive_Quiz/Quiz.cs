@@ -6,7 +6,7 @@ namespace Interactive_Quiz
     public class Quiz : Question
     {
         private List<Question> _questions;
-        private int _currentQuestionIndex = -1;
+        private int _currentQuestionIndex = 0;
         public string Title { get; set; }
         public int Score { get; private set; }
         public string getQuestion;
@@ -20,8 +20,12 @@ namespace Interactive_Quiz
 
         public Quiz()
         {
+            
             Title = "Interactive Quiz";
             LoadQuestions();
+            
+
+            
         }
 
         private void LoadQuestions()
@@ -78,7 +82,14 @@ namespace Interactive_Quiz
 
         private void GetQuestionWithoutAnswer() 
         {
-            getQuestion = _questions[_currentQuestionIndex].QuestionText;
+            var question = new Question
+            {
+                QuestionText = _questions[_currentQuestionIndex].QuestionText,
+                Answer1 = _questions[_currentQuestionIndex].Answer1,
+                Answer2 = _questions[_currentQuestionIndex].Answer2,
+                Answer3 = _questions[_currentQuestionIndex].Answer3,
+                Answer4 = _questions[_currentQuestionIndex].Answer4,
+            };
 
 
         }
