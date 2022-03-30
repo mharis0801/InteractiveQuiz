@@ -10,9 +10,28 @@ namespace Interactive_Quiz
 {
     public partial class MainPage : ContentPage
     {
+        public Quiz quiz = new Quiz();
         public MainPage()
         {
+            
             InitializeComponent();
+
+            
         }
+
+        void A1Butt_Clicked(System.Object sender, System.EventArgs e)
+        {
+            Button button = sender as Button;
+
+
+
+
+        }
+
+        void NextButt_Clicked(System.Object sender, System.EventArgs e)
+        {
+            quiz.GetNextQuestion();
+        }
+
     }
 }

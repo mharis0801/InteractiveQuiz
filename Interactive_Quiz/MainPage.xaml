@@ -4,13 +4,13 @@
              x:Class="Interactive_Quiz.MainPage">
 
     <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="Center" >
-        <Label x:Name="Title" Text="title" FontSize="Title"  />
-        <Label x:Name="QuestionText" Text="Question text" HorizontalOptions="Center"/>
+        <Label x:Name="Title" Text="title" FontSize="Title"  HorizontalOptions="Center"/>
+        <Label x:Name="QuestionText" Text="Question text" HorizontalOptions="Center" FontSize="Large" HeightRequest="100"/>
         <StackLayout Orientation="Horizontal">
-            <Button x:Name="A1Butt" Text="A1"/>
-            <Button x:Name="A2Butt" Text="A2" />
-            <Button x:Name="A3Butt" Text="A3" />
-            <Button x:Name="A4Butt" Text="A4" />
+            <Button x:Name="A1Butt" Text="A1" Clicked="A1Butt_Clicked" WidthRequest="95" />
+            <Button x:Name="A2Butt" Text="A2" Clicked="A1Butt_Clicked" WidthRequest="95"/>
+            <Button x:Name="A3Butt" Text="A3" Clicked="A1Butt_Clicked" WidthRequest="95"/>
+            <Button x:Name="A4Butt" Text="A4" Clicked="A1Butt_Clicked" WidthRequest="95"/>
 
         </StackLayout>
         <Button x:Name="NextButt" Text="Next Question" Clicked="NextButt_Clicked" />
