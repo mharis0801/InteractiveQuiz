@@ -6,29 +6,85 @@ namespace Interactive_Quiz
     public class Quiz : Question
     {
         private List<Question> _questions;
-        private int _currentQuestionIndex;
+        private int _currentQuestionIndex = -1;
         public string Title { get; set; }
         public int Score { get; private set; }
+        
 
 
         public Quiz()
         {
-            _questions = new List<Question>();
+            Title = "Interactive Quiz";
+            LoadQuestions();
         }
 
         private void LoadQuestions()
         {
+            _questions = new List<Question>();
+            //1st question
+            _questions.Add(new Question());
+            _questions[0].QuestionText = "Which is the biggest country in size";
+            _questions[0].Answer1 = "USA";
+            _questions[0].Answer2 = "CANADA";
+            _questions[0].Answer3 = "RUSSIA";
+            _questions[0].Answer4 = "CHINA";
+            _questions[0].CorrectAnswer = "RUSSIA";
+
+            //2nd question
+            _questions.Add(new Question());
+            _questions[1].QuestionText = "what is 2 + 3";
+            _questions[1].Answer1 = "2";
+            _questions[1].Answer2 = "3";
+            _questions[1].Answer3 = "6";
+            _questions[1].Answer4 = "5";
+            _questions[1].CorrectAnswer = "5";
+
+            //3rd question
+            _questions.Add(new Question());
+            _questions[2].QuestionText = "Book is to Reading as Fork is to ________ ";
+            _questions[2].Answer1 = "drawing";
+            _questions[2].Answer2 = "writing";
+            _questions[2].Answer3 = "stirring";
+            _questions[2].Answer4 = "eating";
+            _questions[2].CorrectAnswer = "eating";
+
+
+            //4th question
+            _questions.Add(new Question());
+            _questions[3].QuestionText = "8:4 as 10:?";
+            _questions[3].Answer1 = "3";
+            _questions[3].Answer2 = "7";
+            _questions[3].Answer3 = "24";
+            _questions[3].Answer4 = "5";
+            _questions[3].CorrectAnswer = "5";
+
+
+            //5th question
+            _questions.Add(new Question());
+            _questions[4].QuestionText = "c# is a programing _________";
+            _questions[4].Answer1 = "game";
+            _questions[4].Answer2 = "world";
+            _questions[4].Answer3 = "language";
+            _questions[4].Answer4 = "company";
+            _questions[4].CorrectAnswer = "language";
 
         }
 
-        private GetQuestionWithoutAnswer() : base()
+        private void GetQuestionWithoutAnswer() 
         {
 
         }
 
-        public GetNextQuestion():base()
+        public void GetNextQuestion()
         {
-
+            _currentQuestionIndex++;
+            if (_currentQuestionIndex ! == _questions.Count)
+            {
+                GetQuestionWithoutAnswer();
+            }else
+            {
+                Exception exception;
+            }
         }
 
         public bool CheckUserAnswer(string answer)
