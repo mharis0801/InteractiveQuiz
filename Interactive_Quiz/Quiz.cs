@@ -9,11 +9,7 @@ namespace Interactive_Quiz
         private int _currentQuestionIndex = -1;
         public string Title { get; set; }
         public int Score { get; private set; }
-        public string getQuestion;
-        public string getAnswer1;
-        public string getAnswer2;
-        public string getAnswer3;
-        public string getAnswer4;
+
         public bool isFirstTime;
 
 
@@ -91,49 +87,54 @@ namespace Interactive_Quiz
                 Answer3 = "language",
                 Answer4 = "company",
                 CorrectAnswer = "language",
-
             });
-       
-
         }
 
-        private void GetQuestionWithoutAnswer()
+        private Question GetQuestionWithoutAnswer()
         {
-            var question = new Question
-            {
-                QuestionText = _questions[_currentQuestionIndex].QuestionText,
-                Answer1 = _questions[_currentQuestionIndex].Answer1,
-                Answer2 = _questions[_currentQuestionIndex].Answer2,
-                Answer3 = _questions[_currentQuestionIndex].Answer3,
-                Answer4 = _questions[_currentQuestionIndex].Answer4,
-            };
-
-
+            return _questions[_currentQuestionIndex];
         }
 
-        public void GetNextQuestion()
+        public Question GetNextQuestion()
         {
+            
             _currentQuestionIndex++;
-            GetQuestionWithoutAnswer();
 
-            //if (_currentQuestionIndex! == _questions.Count)
-            //{
-            //    GetQuestionWithoutAnswer();
-            //}
-            //else if (_currentQuestionIndex == _questions.Count)
-            //{
-            //    Exception exception;
-            //}
+            try
+            {
+                if (_currentQuestionIndex == _questions.Count)
+                {
+                    throw new Exception($"Quiz ended!! Score is {Score} out of {_questions.Count}");
+                }
+            }
+            catch(Exception ex)
+            {
+                return new Question()
+                {
+                    QuestionText = ex.Message 
+                };
+            }
+            return GetQuestionWithoutAnswer();
+
+
+
+
 
 
 
         }
 
-        //public bool CheckUserAnswer(string answer)
-        //{
-        //    answer = _questions[_currentQuestionIndex].CorrectAnswer;
-
-        //}
-
+        public bool CheckUserAnswer(string answer)
+        {
+            if (answer == _questions[_currentQuestionIndex].CorrectAnswer)
+            {
+                Score++;
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
     }
 }

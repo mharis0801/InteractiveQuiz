@@ -11,8 +11,6 @@ namespace Interactive_Quiz
         public string CorrectAnswer { get; set; }
 
 
-        public Question()
-        {
-        }
+        
     }
 }
